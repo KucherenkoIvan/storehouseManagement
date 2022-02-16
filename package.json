@@ -1,0 +1,20 @@
+{
+  "name": "storehousemanagement",
+  "version": "1.0.0",
+  "description": "Тестовое задание для СФК",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "export NODE_ENV=dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KucherenkoIvan/storehouseManagement.git"
+  },
+  "author": "Kucherenko Ivan <stysha.72@mail.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KucherenkoIvan/storehouseManagement/issues"
+  },
+  "homepage": "https://github.com/KucherenkoIvan/storehouseManagement#readme"
+}

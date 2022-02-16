@@ -1,0 +1,9 @@
+NODE_ENV=dev
+
+# Database
+
+DB_PASSWORD=test
+DB_USER=postgres
+DB_PORT=5000
+
+
