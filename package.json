@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "export NODE_ENV=dev"
+    "db:up": "docker-compose --env-file ./env/dev.env -f docker-compose.db.yml up -d",
+    "db:down": "docker-compose --env-file ./env/dev.env -f docker-compose.db.yml down",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd ./server && npm run start",
+    "client": "cd ./client && npm run start"
   },
   "repository": {
     "type": "git",
@@ -16,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/KucherenkoIvan/storehouseManagement/issues"
   },
-  "homepage": "https://github.com/KucherenkoIvan/storehouseManagement#readme"
+  "homepage": "https://github.com/KucherenkoIvan/storehouseManagement#readme",
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
 }
