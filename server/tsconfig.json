@@ -2,7 +2,9 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "outDir": "build",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "target": "ES6",
+    "moduleResolution": "Node"
   },
   "sourceMap": true
 }

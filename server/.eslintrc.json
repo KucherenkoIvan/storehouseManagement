@@ -1,6 +1,6 @@
 {
     "env": {
-        "browser": true,
+        "browser": false,
         "es2021": true
     },
     "extends": [
@@ -31,6 +31,10 @@
         "semi": [
             "error",
             "always"
-        ]
-    }
+        ],
+        "no-trailing-spaces": 2
+    },
+    "ignorePatterns": [
+        "build/*"
+    ]
 }

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "server app",
   "main": "./src/index.js",
+  "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
@@ -24,8 +25,11 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.12.0",
     "@typescript-eslint/parser": "^5.12.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "eslint": "^8.9.0",
     "nodemon": "^2.0.15",
+    "sequelize-cli": "^6.4.1",
     "typescript": "^4.5.5"
   }
 }
