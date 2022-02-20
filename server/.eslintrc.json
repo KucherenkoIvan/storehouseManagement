@@ -32,9 +32,11 @@
             "error",
             "always"
         ],
+        "sort-imports":"error",
         "no-trailing-spaces": 2
     },
     "ignorePatterns": [
-        "build/*"
+        "build/*",
+        ".*rc"
     ]
 }

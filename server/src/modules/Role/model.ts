@@ -1,20 +1,25 @@
 import {
-  Model,
+  CreationOptional,
+  DataTypes,
   InferAttributes,
   InferCreationAttributes,
-  CreationOptional,
-  DataTypes
+  Model
 } from 'sequelize';
 import db from '../../db';
 
-class Role extends Model<InferAttributes<Role>, InferCreationAttributes<Role>> {
+export interface IRole {
+  id: number;
+  name: string;
+}
+
+class Role extends Model<InferAttributes<Role>, InferCreationAttributes<Role>> implements IRole {
   declare id: CreationOptional<number>;
   declare name: string;
 }
 
 Role.init({
   id: {
-    type: DataTypes.INTEGER.UNSIGNED,
+    type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
@@ -25,5 +30,7 @@ Role.init({
   tableName: 'Roles',
   sequelize: db
 });
+
+db.define(Role.tableName, Role.getAttributes());
 
 export default Role;
