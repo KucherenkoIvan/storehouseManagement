@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db:up": "docker-compose --env-file ./env/dev.env -f docker-compose.db.yml up -d",
-    "db:down": "docker-compose --env-file ./env/dev.env -f docker-compose.db.yml down",
+    "db:up": "docker-compose --env-file ./env/development.env -f docker-compose.db.yml up -d",
+    "db:down": "docker-compose --env-file ./env/development.env -f docker-compose.db.yml down",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd ./server && npm run start",
+    "server": "cd ./server && npm run dev",
     "client": "cd ./client && npm run start"
   },
   "repository": {

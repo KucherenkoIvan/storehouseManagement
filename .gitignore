@@ -1,7 +1,12 @@
 node_modules
+
 */node_modules
+
 env/*
 public/*
+
 */.eslintcache
-./server/build
-./client/build
+
+server/config
+server/build
+client/build
