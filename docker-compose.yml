@@ -1,18 +1,61 @@
 version: '3.1'
 
+networks:
+  common_network:
+    driver: bridge
+
 services:
 
   db:
-    image: postgres
-    volumes:
-      - ./public/postgres:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: $DB_USER
-      POSTGRES_PASSWORD: $DB_PASSWORD
-    ports:
-      - $DB_PORT
+    extends:
+      file: ./docker-compose.db.yml
+      service: db
+    networks:
+      - common_network
 
   adminer:
-    image: adminer
+    extends:
+      file: ./docker-compose.db.yml
+      service: adminer
+    depends_on:
+      - db
+    networks:
+      - common_network
+  
+  app:
+    container_name: app
+    environment:
+      NODE_ENV: $NODE_ENV
+    build:
+      dockerfile: ./server/Dockerfile
+      context: ./
     ports:
-      - 8080:8080
+      - 5000:5000
+    depends_on:
+      - db
+    networks:
+      - common_network
+
+  nginx:
+    container_name: nginx
+    build:
+      dockerfile: ./Dockerfile
+      context: ./
+    ports:
+      - 80:80
+    depends_on:
+      - web
+      - app
+    networks:
+      - common_network
+
+  web:
+    container_name: web
+    build:
+      ./client
+    depends_on:
+      - app
+    ports:
+      - 3000:80
+    networks:
+      - common_network

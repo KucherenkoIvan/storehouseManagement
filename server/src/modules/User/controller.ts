@@ -11,14 +11,14 @@ export class HttpUserController {
     this._userService = userService;
   }
 
-  private async createAuthHash(id: string, login: string, role: string) {
-    const authHash = await jwt.sign(
+  private async createauthToken(id: string, login: string, role: string) {
+    const authToken = await jwt.sign(
       { id, login, role },
       config.JWT_SECRET,
       { expiresIn: '4h' }
     );
 
-    return authHash;
+    return authToken;
   }
 
   async register(req: Request, res: Response) {
@@ -27,9 +27,9 @@ export class HttpUserController {
     try {
       const { id } = await this._userService.register(login, password, role);
 
-      const authHash = await this.createAuthHash(id.toString(), login, role.toString());
+      const authToken = await this.createauthToken(id.toString(), login, role.toString());
 
-      res.cookie('auth', authHash, { maxAge: 4 * 60 * 60 }).json(authHash);
+      res.cookie('auth', authToken, { maxAge: 4 * 60 * 60 }).json({ id, login, role, authToken });
     } catch (error) {
       new HttpError(res, error.message, 500);
     }
@@ -41,9 +41,9 @@ export class HttpUserController {
     try {
       const { id, role } = await this._userService.authenticate(login, password);
 
-      const authHash = await this.createAuthHash(id.toString(), login, role.toString());
+      const authToken = await this.createauthToken(id.toString(), login, role.toString());
 
-      res.cookie('auth', authHash, {  maxAge: 4 * 60 * 60 }).json(authHash);
+      res.cookie('auth', authToken, {  maxAge: 4 * 60 * 60 }).json({ id, login, role, authToken });
     } catch (error) {
       new HttpError(res, error.message, 500);
     }

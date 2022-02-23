@@ -24,6 +24,7 @@ function createMiddleware(resource: string, action: string): Middleware {
     try {
       decoded = await jwt.verify(authCookie, config.JWT_SECRET);
       role = Number(decoded.role);
+      res.cookie('auth', authCookie);
     } catch (error) {
       throw new HttpError(res, 'Not authorized', 401);
     }
