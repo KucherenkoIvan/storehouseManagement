@@ -1,4 +1,3 @@
-import config from './config';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import db from './db';

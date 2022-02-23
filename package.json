@@ -4,15 +4,16 @@
   "description": "Тестовое задание для СФК",
   "main": "index.js",
   "scripts": {
+    "build": "cd client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:up": "docker-compose --env-file ./env/development.env -f docker-compose.db.yml up -d",
     "db:down": "docker-compose --env-file ./env/development.env -f docker-compose.db.yml down",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd ./server && npm run dev",
     "client": "cd ./client && npm run start",
-    "dockerize": "docker-compose --env-file ./env/production.env up --force-recreate --abort-on-container-exit --build",
+    "dockerize": "npm run build && docker-compose --env-file ./env/production.env up --abort-on-container-exit",
     "docker:config": "docker-compose --env-file ./env/production.env config",
-    "docker:down": "docker-compose --env-file ./env/production.env down --rmi all"
+    "docker:cleanup": "docker-compose --env-file ./env/production.env down --rmi all"
   },
   "repository": {
     "type": "git",

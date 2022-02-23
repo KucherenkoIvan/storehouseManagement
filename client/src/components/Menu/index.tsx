@@ -30,7 +30,7 @@ const Nowrap = styled(Container)`
 const AppMenu: React.FC<{ title: string }> = ({ title }) => {
   const [userElemenr, setUserElement] = React.useState<null | HTMLElement>(null);
 
-  const { userInfo: { role } } = useAuth();
+  const { userInfo: { role }, logout } = useAuth();
 
   const userClickHandler = (event: React.MouseEvent<HTMLElement>) => {
     setUserElement(event.currentTarget);
@@ -94,7 +94,7 @@ const AppMenu: React.FC<{ title: string }> = ({ title }) => {
                   <Typography>Личный кабинет</Typography>
                 </Link>
               </MenuItem>
-              <MenuItem onClick={closeMenu}>
+              <MenuItem onClick={logout}>
                 <Typography>Выйти</Typography>
               </MenuItem>
             </Menu>

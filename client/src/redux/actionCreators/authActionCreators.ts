@@ -72,7 +72,7 @@ export const register = (login: string, password: string) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          login, password, role: 1
+          login, password, role: 2
         })
       });
 
