@@ -57,7 +57,6 @@ export class OrderService implements IOrderService {
           product.price
         );
       }
-      console.log('saved');
 
       throw error;
     }
